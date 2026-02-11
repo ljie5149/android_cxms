@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:src="@drawable/icon_circle_bone_density_vector"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_bone_density_time"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_bone_density_title" />
+
+    <TextView
+        android:id="@+id/tv_bone_density_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/circle_bone_density"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_title"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_bone_density_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="-"
+        app:layout_constraintStart_toStartOf="@+id/tv_bone_density_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bone_density_title" />
+
+    <TextView
+        android:id="@+id/tv_bone_density"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="-"
+        android:textColor="@android:color/holo_red_light"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_unit"
+        app:layout_constraintEnd_toStartOf="@+id/tv_unit"
+        app:layout_constraintTop_toTopOf="@+id/tv_unit" />
+
+    <TextView
+        android:id="@+id/tv_unit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/unit_t_score"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_bone_density_time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_bone_density_title" />
+
+    <com.jotangi.cxms.ui.home.bar.BoneDensityColorBar
+        android:id="@+id/cb_bone_density"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/tv_unit"
+        app:layout_constraintStart_toStartOf="@+id/iv_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bone_density_time" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nsv_bone_density"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/v_line_bone_density"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_bone_density">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="@drawable/background_illustrate_hr"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_bone_density_legend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/legend_bone_density"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <View
+        android:id="@+id/v_line_bone_density"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:layout_marginBottom="10dp"
+        android:alpha="0.3"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toTopOf="@+id/cbcv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/cbcv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="近7次骨質密度測量"
+        app:layout_constraintBottom_toTopOf="@+id/cbbd_bone_density"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.jotangi.cxms.ui.home.bar.ColumnarBarBoneDensity
+        android:id="@+id/cbbd_bone_density"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_insert_data"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/bt_insert_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/shape_round_hr"
+        android:text="@string/insert_data_no_auto"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

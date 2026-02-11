@@ -1,0 +1,217 @@
+<resources>
+    <string name="pre_dia_question">診前問卷</string>
+    <string name="pre_back_question">診前問卷back</string>
+    <string name="pre_video_question">診前問卷video</string>
+    <string name="app_name">禾欣骨科診所</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="toolbar_title">數體健</string>
+    <string name="unit_hr">BPM</string>
+    <string name="unit_kcal">Kcal</string>
+    <string name="unit_percent">%</string>
+    <string name="unit_per_minute_time">次/分</string>
+    <string name="unit_per_minute_temperature">°c</string>
+    <string name="unit_bp">MMHG</string>
+    <string name="gatt_service_description">A background BLE IBeacon service</string>
+
+    <string name="txt_hr">
+        <string>
+            <font color="#fe6867"><p>了解心率數據分析\n</p>
+            <font color="#fe6867"><p>\n靜態心率:靜止狀態下每分鐘心跳次數一般為60-100次<br /></p>
+                <p>\n動態心率:根據心率變化來判斷身體運動狀態<br /></p>
+            </font></font>
+        </string>
+    </string>
+    <string name="legend_bone_density">
+        <font color="#fe6867">骨質密度與年齡、性別皆有關聯。\n</font>
+        <font color="#000000">T-Score：> 0\n</font>
+        <font color="#fe6867">骨質密度良好，多攝取鈣質，多存骨本。\n</font>
+        <font color="#000000">T-Score：0 ~ -1\n</font>
+        <font color="#fe6867">骨質密度正常，多攝取鈣質，可增加補充鈣片。\n</font>
+        <font color="#000000">T-Score：-1.1 ~ -2.49\n</font>
+        <font color="#fe6867">骨質密度流失(-1.1 ~ -1.49) 輕度缺乏、(-1.5 ~ -1.99) 中度缺乏、(-2 ~ -2.49)重度缺乏，密度品質屬缺乏中(骨本不足)，減少不良習慣，定期抽血，尿液等檢查，並攝取高鈣食物，多嘗試重力型運動，並與醫師配合(每日補充鈣片600 ~ 1,000mg)。\n</font>
+        <font color="#000000">T-Score：-2.5以下\n</font>
+        <font color="#fe6867">骨質脆弱，遠離不良習慣，做健康檢查，個人應注意勿跌倒及外力撞擊，以免發生骨折危險並與醫療院所密切結合(加強每日補充鈣片1,000 ~ 1,500mg)。</font>
+    </string>
+    <string name="legend_macular_pigment">
+        <font color="#000000">MPOD：> 0.75\n</font>
+        <font color="#fe6867">黃斑部色素正常，黃斑部色素層儲存的葉黃素及玉米黃素足夠，建議可低劑量補充葉黃素。\n</font>
+        <font color="#000000">MPOD：0.5 ~ 0.74\n</font>
+        <font color="#fe6867">黃斑部色素輕度流失，建議每日攝取葉黃素，以補充眼睛黃斑部色素層。\n</font>
+        <font color="#000000">MPOD：0.26 ~ 0.49\n</font>
+        <font color="#fe6867">黃斑部色素中度流失，建議每日攝取至少6mg葉黃素，以維持眼睛黃斑部色素層厚度，若有黃斑部病變家族史、抽菸，則建議設取高劑量葉黃素，預防眼部病變。\n</font>
+        <font color="#000000">MPOD：0.25以下\n</font>
+        <font color="#fe6867">黃斑部色素層防護性偏低，增加黃斑部病變的機率，需定期追蹤並攝取高劑量葉黃素，以維持健康的防護及預防眼睛病變。</font>
+    </string>
+    <string name="title_bar"><font style="bold" color="#000000">近7次心率測量</font></string>
+    <string name="title_breath_rate_bar"><font style="bold" color="#000000">近7次呼吸率測量</font></string>
+    <string name="click_measure_hr"><font color="#ffffff">點擊開始血壓校正</font></string>
+    <string name="insert_data_no_auto"><font color="#ffffff">手動新增數據</font></string>
+    <string name="title_sleep">總睡眠</string>
+    <string name="txt_sleep">睡眠品質是從手錶測得睡眠規律，時間，深度睡眠，夜裡醒來次數和清醒時間等因子後，以匹茲堡睡眠指數計算而成</string>
+    <string name="notification">ttttt</string>
+    <string name="camera">照相</string>
+    <string name="gallery">圖庫</string>
+    <string name="cut">裁切</string>
+    <string name="txt_agree">我同意以此資料註冊會員，並同意<font color="#CE0000">會員使用條款</font></string>
+    <string name="txt_referralcode_1"><font color="#CE0000">邀請好友下載</font><font color="#000000">數體健App</font></string>
+    <string name="txt_referralcode_2"><font color="#000000">您與好友皆可獲得</font><font color="#CE0000">100元健康point</font></string>
+    <string name="ref_message">%1$s 已贈送100元健康point給您，只要註冊數體健APP時輸入推薦碼%2$s...</string>
+    <string name="watch_find">已找到裝置</string>
+    <string name="watch_bind">已配對裝置</string>
+    <string name="watch_connecting">裝置連線中...</string>
+    <string name="watch_cancel">解除綁定</string>
+    <string name="text_10">EE:AD:ER:DE:DE</string>
+    <string name="text_100">未綁定裝置</string>
+    <string name="hour24">24小時制</string>
+    <string name="hour12">12小時制</string>
+    <string name="lanCh">繁體中文</string>
+    <string name="lanCho">請選擇語言</string>
+    <string name="title_activity_store_manger">StoreMangerActivity</string>
+    <string name="pref_key_camerax_rear_camera_target_resolution" translatable="false">crctas</string>
+    <string name="pref_key_camerax_front_camera_target_resolution" translatable="false">cfctas</string>
+    <string name="pref_key_camera_live_viewport" translatable="false">clv</string>
+    <string name="pref_key_info_hide" translatable="false">ih</string>
+    <string-array name="array_name">
+        <item>Array Item One</item>
+        <item>Array Item Two</item>
+        <item>Array Item Three</item>
+    </string-array>
+    <string name="hosi_tx2">請確實填寫下方<font color='red'>就診者</font>訊息，以方便進行後續身分驗證及診療</string>
+
+    <string name="ecg_start_ok">開始測試</string>
+    <string name="ecg_start">請戴緊設備，使底殼的金屬片緊貼手腕皮膚，並將手指接觸到設備的正面或側面的金屬片，保持安靜並開始測試！</string>
+    <string name="ecg_start_title">佩戴提示</string>
+    <string name="button_confirm">確認</string>
+
+    <string name="no_data">-</string>
+    <string name="bp_unit">MMHG</string>
+    <string name="please_login">請先登入</string>
+    <string name="less_than">\u003C</string>
+
+    <!--  AFragment  -->
+    <string name="circle_heart_rate">心率</string>
+    <string name="circle_blood_pressure">血壓</string>
+    <string name="circle_blood_oxygen">血氧</string>
+    <string name="circle_breath_rate">呼吸率</string>
+    <string name="circle_body_temperature">體溫</string>
+    <string name="circle_sleep">睡眠</string>
+    <string name="circle_step_count">步數紀錄</string>
+    <string name="circle_ecg">心電圖</string>
+    <string name="circle_kcal">卡路里</string>
+    <string name="title_detsil">測量紀錄</string>
+
+    <!--  BFragment  -->
+    <string name="circle_go_body">Go Body</string>
+    <string name="circle_health_rapid_test">健康快篩</string>
+    <string name="circle_vessel_stiffness">血管硬度</string>
+    <string name="circle_physical_examination">體檢</string>
+    <string name="circle_eecp">EECP</string>
+    <string name="circle_foot_pressure_measurement">足壓量測</string>
+    <string name="circle_arm_blood_pressure">雙臂血壓</string>
+    <string name="circle_bone_density">骨質密度</string>
+    <string name="circle_macular_pigment">黃斑部色素</string>
+    <string name="member_pw_hinet">請輸入6～12位英數密碼</string>
+    <string name="unit_t_score">T-score</string>
+    <string name="unit_mpod">MPOD</string>
+
+    <!--  DFragment  -->
+    <string name="circle_fitness_mirror">運動健身鏡</string>
+    <string name="ble_connecting">連接中...</string>
+
+
+    <string name="sample_content">
+        立同意書人: (以下簡稱甲方) 茲就甲方承租依德科技股份有限公司(以下簡稱乙方)自有或有權出租之停車位相關事宜，
+        甲方同意以下事項:
+
+        1 停車位租用期間:
+        本停車位租用同意書(以下簡稱「本同意書」)為定期租賃，自同意日起，一個月(每月 1 日至 30/31 日)為一期，除依本同意書第4條規定提前終止或不續約終止。
+
+        2 停車位租用費用及扣款:
+        2.1 每期租金為新台幣2,400元整(含稅)。
+        2.2 每期租金由甲方使用APP線上付款，待確認收到費用，後續會開立電子發票至甲方指定信箱或電子載具。
+        2.3 乙方有權利變更支付方法。
+
+        3 甲方義務:
+        3.1 停車位僅得由甲方自行使用，不得借用、轉讓或轉租停車位予任何第三人，倘私自轉讓經查證屬實者，取消其月繳租用資格。
+        3.2 甲方須自行注意並遵守停車場之停車規定或停車場使用規範(如:損壞設備、遺失設備賠償)以及相關規定之更新。甲方若有違反，應對權利人負損害賠償責任。
+        3.3 停車位僅供甲方停放已向乙方完成車號登記之車輛，若甲方欲變更登記之車輛，應向乙方提出申請，乙方於審核相關資料無誤後，甲方即可繼續使用車位。
+        3.4 甲方應自行妥善管理並盡其應注意之義務，乙方不負任何保管、賠償之責。
+
+        4 停車位租用期間之終止或不續約:
+        4.1 如甲方欲於當期期滿前提前終止租用停車位或期滿不欲續約，應於終止日前 10 日發送電子郵件告知或至停車服務台向專員申請退租。
+        4.2 若甲方於當期期滿前提前終止租用停車位，租金將按使用天數比例退還，另會扣除退款手續費每筆30元，退款作業約10-15個工作天。
+        4.3 甲方應於停車位租用期間終止當日將車位清空原狀返還乙方，否則乙方得代為清空車位並任意處置甲方未清空之物品，相關衍生費用由甲方負擔。
+
+        5 違約處理: 甲方如有違反本同意書、乙方其他相關規定、停車場使用規範或法令時，應依民、刑法 及相關規定，賠償乙方或其他第三人(如停車場所有權人)所受之損害，並承擔一切法律責 任。乙方並得立即收回甲方所承租之車位，且取消甲方往後租用停車位之資格。
+
+        6 其他:
+        6.1 甲乙雙方應遵守中華民國相關法律，若因本同意書所發生之爭議，雙方應依誠信原則解決;如有訴訟之必要，雙方同意以台北地方法院為第一審管轄法院。
+        6.2 本同意書壹式貳份，經甲方簽署後，甲乙雙方各執壹份，以資憑信。
+        6.3 本月租並沒有保留及固定車位。
+
+        立書同意人（甲方）：操作者
+        中華民國        年      月     日
+
+
+
+    </string>
+    <string name="traffic_content">
+        ◎自行開車:
+\n地址：桃園市桃園區中正路1179號
+\n停車資訊：診所旁中寧街內有收費停車場，燦坤旁、家樂福超市旁皆有收費停車場
+\n
+\n◎公車路線:
+\n【站名:行政執行處】下車中正路直行即可抵達(步行約2分鐘)
+\n桃園火車站前站→藝文特區：117、152
+\n桃園火車站後站→藝文特區：188、189、302、GR、1662
+\n桃園高鐵站→藝文特區：1662
+\n桃園市政府→藝文特區：707A
+\n桃園區免費市民公車：L101、L101A、L101B、L102、L102A、L103、L103A、L105、L105A
+
+    </string>
+    <string name="qa_content">
+        常見問題 Q &amp; A
+    \nQ : 初診可以預約掛號嗎？
+    \n初診依主管機關規定需填具個人資料及核對身份,所以請您當天來現場掛號。
+    \n
+    \nQ : 已預約者需要到櫃台報到嗎?
+    \n是的,因本所醫療系統讀健保卡報到後,診間才能看到您的病歷資料。
+    \n
+    \nQ : 每次都好多人需等好久?
+    \n很抱歉,因每位醫師問診所需之時間不同，若同時報到人次眾多,則等候時間會變長,建議可先來電詢問現場候診人數
+    \n
+    \nQ : 掛號很後面,又有事需先離院去辦理,該怎麼辦呢?
+    \n請告知櫃台人員並於該時段門診停止掛號前返院看診,若無法即時趕回請撥打電話03-3586670由櫃台人員為您改約其他時段
+    \n
+    \nQ : 為什麼領藥還要再讀一次健保卡?
+    \n因配合主管政策實施醫藥分業,故診所釋出處方後藥品部份由健保藥局自行向健保局申報,故必須將藥品資料寫入健保卡內並將資料上傳給健保局
+    \n
+    \nQ : 因工作受傷可以職業災害身份看診?
+    \n因工作造成的職業災害可以向投保單位申請職災單,門診時持健保卡及職災單就診,一份職災單限用於一家醫療院所,職災身份免收部份負擔,但自費項目照常收費(如:掛號費..等)
+    \n
+    \nQ : 照X光需自費嗎?可以馬上看片嗎?
+    \nX光檢查健保有給付;本院採用PACS系統,照片完成後當診即可看片。
+    \n
+    \nQ : 門診照的X光片可以帶走嗎?
+    \n不行唷,若您個人有需要可以向櫃台申請拷貝X光片。
+    \n
+    \nQ : 診斷書該如何申請?
+    \n1.建議您先向保險公司確認理賠的內容,並於療程結束時請主治醫師開立診斷書
+    \n2.本人申請：請於您的醫師門診時間持健保卡(或相關證件)到櫃台申請,需詳註特別事項請事先說明。
+    \n3.委託代辦：請攜帶委託書並帶2人雙證件到櫃台,本院維護您個人資料不外洩,需核對身份無誤後，才會提供申請資料。
+    \n
+    \nQ : 收據若遺失了,該怎麼辦?
+    \n依國稅局規定,每項消費只開立正本收據乙份,若不慎遺失可申請副本收據,但副本收據不可用於報稅，至於保險理賠則依各家保險公司規定。
+    \n
+    \nQ : 看診完返家吃藥後身體不適,或發生過敏時該怎麼辦?
+    \n1.情況緊急請家屬先送鄰近的急診處理,再電話聯絡診所03-3586670
+    \n2 .非上述狀況,建議先停藥並於門診時間帶口服藥返院,由醫師重新為您診療並調整用藥
+    \n
+    \nQ : 診所由提供骨質密度檢查嗎? 要自費嗎?
+    \n本所不定期會舉辦免費骨質密度篩檢活動,有意參加的鄉親可隨時留意本院公告訊息或來電洽詢。
+    \n
+    \nQ : 骨質密度需多久做一次檢查？
+    \n骨質疏鬆是隱形的殺手,隨著歲月流逝骨質也會流失,建議35歲以上的成人可開始受檢,每年為自己安排一次骨質的健康檢查是必須的,先瞭解自己的骨本才能正確的健康保健之道。
+
+    </string>
+</resources>

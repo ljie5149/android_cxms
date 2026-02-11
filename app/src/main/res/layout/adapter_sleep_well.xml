@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:id="@+id/tv_title_day"
+        style="@style/sleepWellTitleAdapter"
+        android:background="@drawable/shape_sleep_well_blue"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/tv_title_am"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2023/03/08\n(五)"/>
+
+    <TextView
+        android:id="@+id/tv_title_am"
+        style="@style/sleepWellTitleAdapter"
+        android:background="@drawable/shape_sleep_well_water_blue"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tv_title_pm"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_title_day"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_day"
+        tools:text="可預約(7)"/>
+
+    <TextView
+        android:id="@+id/tv_title_pm"
+        style="@style/sleepWellTitleAdapter"
+        android:background="@drawable/shape_sleep_well_water_blue"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_title_am"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_day"
+        tools:text="不可預約"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

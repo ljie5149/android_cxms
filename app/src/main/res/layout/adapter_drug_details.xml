@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/drug_detail_bound"
+    android:background="@drawable/shape_drug"
+    android:padding="@dimen/drug_detail_bound">
+
+    <TextView
+        android:id="@+id/tv_drug_name_title"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_white_left"
+        android:gravity="center"
+        android:text="藥品簡稱"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_drug_name"
+        app:layout_constraintEnd_toStartOf="@+id/tv_drug_name"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_drug_name" />
+
+    <TextView
+        android:id="@+id/tv_drug_name"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_right"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintStart_toEndOf="@+id/tv_drug_name_title"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="CordaroneTablets200mg\/tab(臟得樂錠)" />
+
+    <TextView
+        android:id="@+id/tv_drug_frequency"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/drug_detail_bound"
+        android:background="@drawable/shape_white_top"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/tv_tv_drug_frequency_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_deal"
+        app:layout_constraintHorizontal_weight="3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_deal"
+        tools:text="每天一次；早飯後" />
+
+    <TextView
+        android:id="@+id/tv_tv_drug_frequency_title"
+        style="@style/drug_detail_small_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        android:gravity="center"
+        android:text="用藥頻率"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_outward_legend"
+        app:layout_constraintEnd_toEndOf="@+id/tv_drug_frequency"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_drug_frequency" />
+
+    <TextView
+        android:id="@+id/tv_deal"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drug_detail_bound"
+        android:background="@drawable/shape_white_top"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="7"
+        app:layout_constraintStart_toEndOf="@+id/tv_drug_frequency"
+        app:layout_constraintTop_toBottomOf="@+id/tv_drug_name"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/tv_deal_title"
+        style="@style/drug_detail_small_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        android:gravity="center"
+        android:text="日份"
+        app:layout_constraintEnd_toEndOf="@+id/tv_deal"
+        app:layout_constraintStart_toStartOf="@+id/tv_deal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_deal" />
+
+    <TextView
+        android:id="@+id/tv_outward"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drug_detail_bound_small"
+        android:layout_marginEnd="@dimen/drug_detail_bound_small"
+        android:background="@drawable/shape_white_top"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/tv_dosage"
+        app:layout_constraintStart_toStartOf="@+id/tv_deal"
+        app:layout_constraintTop_toBottomOf="@+id/tv_deal_title"
+        tools:text="1" />
+
+    <TextView
+        android:id="@+id/tv_outward_legend"
+        style="@style/drug_detail_small_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        android:gravity="center"
+        android:text="外觀"
+        app:layout_constraintEnd_toEndOf="@+id/tv_outward"
+        app:layout_constraintStart_toStartOf="@+id/tv_outward"
+        app:layout_constraintTop_toBottomOf="@+id/tv_outward" />
+
+    <TextView
+        android:id="@+id/tv_dosage"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/drug_detail_bound_small"
+        android:background="@drawable/shape_white_top"
+        android:gravity="center"
+        app:layout_constraintEnd_toStartOf="@+id/tv_total"
+        app:layout_constraintStart_toEndOf="@+id/tv_outward"
+        app:layout_constraintTop_toTopOf="@+id/tv_outward"
+        tools:text="1" />
+
+    <TextView
+        style="@style/drug_detail_small_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        android:gravity="center"
+        android:text="劑量"
+        app:layout_constraintEnd_toEndOf="@+id/tv_dosage"
+        app:layout_constraintStart_toStartOf="@+id/tv_dosage"
+        app:layout_constraintTop_toBottomOf="@+id/tv_outward" />
+
+    <TextView
+        android:id="@+id/tv_total"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_top"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="@+id/tv_deal"
+        app:layout_constraintStart_toEndOf="@+id/tv_dosage"
+        app:layout_constraintTop_toTopOf="@+id/tv_outward"
+        tools:text="1" />
+
+    <TextView
+        style="@style/drug_detail_small_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        android:gravity="center"
+        android:text="總量"
+        app:layout_constraintEnd_toEndOf="@+id/tv_total"
+        app:layout_constraintStart_toStartOf="@+id/tv_total"
+        app:layout_constraintTop_toBottomOf="@+id/tv_outward" />
+
+    <TextView
+        android:id="@+id/tv_knowledge_title"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drug_detail_bound"
+        android:background="@drawable/shape_white_top"
+        android:text="用藥須知"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_outward_legend" />
+
+    <TextView
+        android:id="@+id/tv_knowledge"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_knowledge_title"
+        tools:text="四肢發抖，頭暈，心跳過快，視覺異常。" />
+
+    <TextView
+        android:id="@+id/tv_by_effect_title"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drug_detail_bound"
+        android:background="@drawable/shape_white_top"
+        android:text="副作用"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_knowledge" />
+
+    <TextView
+        android:id="@+id/tv_by_effect"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_by_effect_title"
+        tools:text="疲倦、喪失食慾、心跳不規則、低血壓、呼吸喘、噁心、便秘" />
+
+    <TextView
+        android:id="@+id/tv_symptom_title"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/drug_detail_bound"
+        android:background="@drawable/shape_white_top"
+        android:text="適應症狀"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_by_effect" />
+
+    <TextView
+        android:id="@+id/tv_symptom"
+        style="@style/drug_detail_big_txt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_white_bottom"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_symptom_title"
+        tools:text="ＷＯＬＦＦ－ＰＡＲＫＩＮＳＯＮ－ＷＨＩＴＥ氏症候群、上室性及心室性心搏過速、心房撲動、心房纖維顫動、" />
+</androidx.constraintlayout.widget.ConstraintLayout>

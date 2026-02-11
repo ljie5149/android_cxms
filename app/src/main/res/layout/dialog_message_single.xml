@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/shape_f_r_dialog_message"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tv_dms_title"
+            style="@style/tv_dialog_message_single"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="20dp"
+            android:paddingBottom="10dp"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="衛生福利部雙和醫院" />
+
+        <TextView
+            android:id="@+id/tv_dms_content"
+            style="@style/tv_dialog_message_single"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:layout_marginTop="@dimen/space_newline"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/tv_dms_title"
+            app:layout_constraintStart_toStartOf="@+id/tv_dms_title"
+            app:layout_constraintTop_toBottomOf="@id/tv_dms_title"
+            app:layout_constraintBottom_toTopOf="@+id/tv_dms_cancel"
+            tools:text="拉拉熊最後換購機會！快來跟拉拉熊一起慵懶地度過每一天～ 換購好康再加碼！10福利點就可以加價換購擦手巾、USB體重機 最低換購只要79元起！趕緊手刀前往全聯換購起來～" />
+
+        <TextView
+            android:id="@+id/tv_dms_cancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space_newline"
+            android:background="@drawable/shape_l_r_top_line"
+            android:gravity="center"
+            android:padding="10dp"
+            android:textColor="@color/blue"
+            android:textSize="22dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_dms_content"
+            tools:text="關閉"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

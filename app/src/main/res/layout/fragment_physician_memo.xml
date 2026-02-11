@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_memo_person"
+        style="@style/physician_memo_tv"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="諮詢醫生："
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_memo_person_content"
+        style="@style/physician_memo_tv"
+        app:layout_constraintStart_toEndOf="@+id/tv_memo_person"
+        app:layout_constraintTop_toTopOf="@+id/tv_memo_person" />
+
+    <TextView
+        android:id="@+id/tv_memo_division"
+        style="@style/physician_memo_tv"
+        android:text="科別："
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@+id/tv_memo_person"
+        app:layout_constraintTop_toBottomOf="@+id/tv_memo_person" />
+
+    <TextView
+        android:id="@+id/tv_memo_division_content"
+        style="@style/physician_memo_tv"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/tv_memo_division"
+        app:layout_constraintTop_toTopOf="@+id/tv_memo_division" />
+
+    <TextView
+        android:id="@+id/tv_memo_date"
+        style="@style/physician_memo_tv"
+        android:text="日期："
+        app:layout_constraintStart_toStartOf="@+id/tv_memo_person"
+        app:layout_constraintTop_toBottomOf="@+id/tv_memo_division" />
+
+    <TextView
+        android:id="@+id/tv_memo_date_content"
+        style="@style/physician_memo_tv"
+        app:layout_constraintStart_toEndOf="@+id/tv_memo_date"
+        app:layout_constraintTop_toTopOf="@+id/tv_memo_date" />
+
+    <TextView
+        android:id="@+id/tv_memo_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/shape_rectangle_black"
+        android:paddingStart="20dp"
+        android:paddingTop="40dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="20dp"
+        android:textColor="@color/black"
+        android:textSize="34dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_memo_date_content" />
+</androidx.constraintlayout.widget.ConstraintLayout>

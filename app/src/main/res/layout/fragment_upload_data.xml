@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_upload_picture"
+        style="@style/tv_upload_data"
+        android:text="圖片上傳"
+        app:layout_constraintBottom_toTopOf="@+id/tv_upload_voice"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_upload_picture_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_upload_picture"
+        app:layout_constraintStart_toEndOf="@+id/tv_upload_picture"
+        app:layout_constraintTop_toTopOf="@+id/tv_upload_picture"
+        tools:text="3個檔案" />
+
+    <ImageView
+        android:id="@+id/iv_check_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_data_off"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_upload_picture"
+        app:layout_constraintStart_toEndOf="@+id/tv_upload_picture_legend"
+        app:layout_constraintTop_toTopOf="@+id/tv_upload_picture" />
+
+    <TextView
+        android:id="@+id/tv_upload_voice"
+        style="@style/tv_upload_data"
+        android:text="語音上傳(60sec)"
+        app:layout_constraintBottom_toTopOf="@+id/tv_upload_question"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_upload_picture" />
+
+    <TextView
+        android:id="@+id/tv_sound_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:textColor="@color/blue"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_upload_voice"
+        app:layout_constraintStart_toEndOf="@+id/tv_upload_voice"
+        app:layout_constraintTop_toTopOf="@+id/tv_upload_voice"
+        tools:text="3個檔案" />
+
+    <ImageView
+        android:id="@+id/iv_check_sound"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_data_off"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_upload_voice"
+        app:layout_constraintStart_toEndOf="@+id/tv_sound_legend"
+        app:layout_constraintTop_toTopOf="@+id/tv_upload_voice" />
+
+    <TextView
+        android:id="@+id/tv_upload_question"
+        style="@style/tv_upload_data"
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:text="診前問卷"
+        app:layout_constraintBottom_toTopOf="@+id/bt_ud_next"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_upload_voice" />
+
+    <ImageView
+        android:id="@+id/iv_check_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_data_off"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_upload_question"
+        app:layout_constraintStart_toEndOf="@+id/tv_upload_question"
+        app:layout_constraintTop_toTopOf="@+id/tv_upload_question" />
+
+    <Button
+        android:id="@+id/bt_ud_next"
+        style="@style/video_reserve_bottom_button"
+        android:text="下一步：線上付款"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

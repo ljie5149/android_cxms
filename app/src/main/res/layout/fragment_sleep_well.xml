@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="請選擇掛號日期"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_last_week"
+        style="@style/weekWorkTv"
+        android:layout_marginTop="10dp"
+        android:text="上一週"
+        app:layout_constraintEnd_toStartOf="@+id/tv_select_day"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title" />
+
+    <TextView
+        android:id="@+id/tv_select_day"
+        style="@style/weekWorkTv"
+        android:text="自選日期"
+        app:layout_constraintEnd_toStartOf="@+id/tv_next_week"
+        app:layout_constraintStart_toEndOf="@+id/tv_last_week"
+        app:layout_constraintTop_toTopOf="@+id/tv_last_week" />
+
+    <TextView
+        android:id="@+id/tv_next_week"
+        style="@style/weekWorkTv"
+        android:text="下一週"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tv_select_day"
+        app:layout_constraintTop_toTopOf="@+id/tv_last_week" />
+
+    <TextView
+        android:id="@+id/tv_title_day"
+        style="@style/sleepWellTitle"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/shape_sleep_well_blue"
+        android:text="日期"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toStartOf="@+id/tv_title_am"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_last_week" />
+
+    <TextView
+        android:id="@+id/tv_title_am"
+        style="@style/sleepWellTitle"
+        android:background="@drawable/shape_sleep_well_light_blue"
+        android:text="上午"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@+id/tv_title_pm"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_title_day"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_day" />
+
+    <TextView
+        android:id="@+id/tv_title_pm"
+        style="@style/sleepWellTitle"
+        android:background="@drawable/shape_sleep_well_light_blue"
+        android:text="下午"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toEndOf="@+id/tv_title_am"
+        app:layout_constraintTop_toTopOf="@+id/tv_title_day" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title_day" />
+</androidx.constraintlayout.widget.ConstraintLayout>

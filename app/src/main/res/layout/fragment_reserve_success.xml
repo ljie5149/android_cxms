@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.home.ReserveSuccessFragment">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RelativeLayout
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="350dp"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
+
+
+        <TextView
+            android:id="@+id/booking_success"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="16dp"
+            android:text="預約成功"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_centerHorizontal="true"
+            android:id="@+id/details_table"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/booking_success"
+            android:layout_marginTop="16dp">
+
+
+                <TextView
+                    android:id="@+id/one"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="15sp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="預約項目"
+                    android:padding="10dp" />
+                <TextView
+                    app:layout_constraintStart_toEndOf="@id/one"
+                    app:layout_constraintTop_toTopOf="@id/one"
+                    android:textSize="15sp"
+                    android:id="@+id/booking_item"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="EECP"
+                    android:padding="10dp" />
+
+
+
+                <TextView
+                    android:id="@+id/two"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/one"
+                    android:textSize="15sp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="預約者日期時間"
+                    android:padding="10dp" />
+                <TextView
+                    android:textSize="15sp"
+                    app:layout_constraintStart_toEndOf="@id/two"
+                    app:layout_constraintTop_toTopOf="@id/two"
+                    android:id="@+id/booking_date_time"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="2024-11-30 19:00"
+                    android:padding="10dp" />
+
+
+
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/two"
+                    android:id="@+id/three"
+                    android:textSize="15sp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="預約者姓名"
+                    android:padding="10dp" />
+                <TextView
+                    app:layout_constraintStart_toEndOf="@id/two"
+                    app:layout_constraintTop_toBottomOf="@id/two"
+                    android:textSize="15sp"
+                    android:id="@+id/booking_name"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="王小明"
+                    android:padding="10dp" />
+
+
+
+                <TextView
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/three"
+                    android:id="@+id/four"
+                    android:textSize="15sp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="預約者電話"
+                    android:padding="10dp" />
+                <TextView
+                    app:layout_constraintStart_toEndOf="@id/three"
+                    app:layout_constraintTop_toBottomOf="@id/three"
+                    android:textSize="15sp"
+                    android:id="@+id/booking_phone"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="911223344"
+                    android:padding="10dp" />
+
+
+
+                <TextView
+                    android:id="@+id/five"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/four"
+                    android:textSize="15sp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="預約診所"
+                    android:padding="10dp" />
+                <TextView
+                    app:layout_constraintStart_toEndOf="@id/five"
+                    app:layout_constraintTop_toBottomOf="@id/four"
+                    android:textSize="15sp"
+                    android:id="@+id/booking_clinic"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="敏盛智慧健康管理中心"
+                    android:padding="10dp" />
+
+
+
+                <TextView
+                    android:id="@+id/six"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/five"
+                    android:textSize="15sp"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="預約診所地址"
+                    android:padding="10dp" />
+                <TextView
+                    app:layout_constraintStart_toEndOf="@id/six"
+                    app:layout_constraintTop_toBottomOf="@id/five"
+                    android:textSize="15sp"
+                    android:id="@+id/booking_address"
+                    android:layout_width="190dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/cell_border"
+                    android:text="桃園市桃園區民生路107號4樓"
+                    android:padding="10dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

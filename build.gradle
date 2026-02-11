@@ -1,0 +1,42 @@
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        // AGP 7.4.2 is good, no change needed here
+        classpath 'com.android.tools.build:gradle:8.11.2'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.7' // Use the latest version
+
+        // Latest version of Google services
+        classpath 'com.google.gms:google-services:4.4.2'
+
+        // Update Kotlin to a newer version (e.g., 1.8.0 or 1.7.22)
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.0'
+
+        // Update navigation safe-args plugin to latest version
+        classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.5.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+
+        // If you need JCenter for some libraries, you can leave it, but it is deprecated.
+        // Try to migrate away from it if possible.
+        // jcenter()
+
+        // Keep JitPack for libraries hosted there
+        maven { url "https://jitpack.io" }
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

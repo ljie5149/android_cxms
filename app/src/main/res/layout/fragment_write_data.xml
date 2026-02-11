@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_wrd_reserve_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/shape_rectangle_blue"
+        android:padding="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar">
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_title"
+            style="@style/write_reserve_data_tv"
+            android:text="預約訊息"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_division"
+            style="@style/write_reserve_data_tv"
+            android:text="視訊諮詢："
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wrd_ri_title" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_division_content"
+            style="@style/write_reserve_data_tv"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_wrd_ri_division"
+            app:layout_constraintStart_toEndOf="@+id/tv_wrd_ri_division"
+            app:layout_constraintTop_toTopOf="@+id/tv_wrd_ri_division"
+            tools:text="NT1,500/15分鐘" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_physician"
+            style="@style/write_reserve_data_tv"
+            android:text="醫師："
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wrd_ri_division" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_physician_content"
+            style="@style/write_reserve_data_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_wrd_ri_physician"
+            app:layout_constraintStart_toEndOf="@+id/tv_wrd_ri_physician"
+            app:layout_constraintTop_toTopOf="@+id/tv_wrd_ri_physician"
+            tools:text="陳醫師" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_time"
+            style="@style/write_reserve_data_tv"
+            android:text="看診時間："
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wrd_ri_physician" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ri_time_content"
+            style="@style/write_reserve_data_tv"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_wrd_ri_time"
+            app:layout_constraintStart_toEndOf="@+id/tv_wrd_ri_time"
+            app:layout_constraintTop_toTopOf="@+id/tv_wrd_ri_time"
+            tools:text="2022/9/29 10:00" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_wrd_user_info"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:background="#F7E6D8"
+        android:padding="6dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cl_wrd_reserve_info">
+
+        <TextView
+            android:id="@+id/tv_wrd_ui_name"
+            style="@style/write_reserve_data_tv"
+            android:layout_marginTop="10dp"
+            android:text="本次看診本人姓名"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/et_name"
+            style="@style/write_user_data_et"
+            android:layout_width="0dp"
+            android:hint="請填寫"
+            android:paddingStart="10dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_wrd_ui_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tv_wrd_ui_name"
+            app:layout_constraintTop_toTopOf="@+id/tv_wrd_ui_name" />
+
+        <!--        <Spinner-->
+        <!--            android:id="@+id/sp_name"-->
+        <!--            android:layout_width="0dp"-->
+        <!--            android:layout_height="0dp"-->
+        <!--            android:layout_marginStart="4dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/tv_wrd_ui_name"-->
+        <!--            app:layout_constraintEnd_toEndOf="parent"-->
+        <!--            app:layout_constraintStart_toEndOf="@+id/tv_wrd_ui_name"-->
+        <!--            app:layout_constraintTop_toTopOf="@+id/tv_wrd_ui_name" />-->
+
+        <TextView
+            android:id="@+id/tv_wrd_ui_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="若您本次是幫親友進行預約(非本人)，可於會員資料新增您的親友資訊，並於此欄位進行選取"
+            android:textColor="@color/red"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wrd_ui_name" />
+
+        <TextView
+            android:id="@+id/tv_wrd_ui_email"
+            style="@style/write_reserve_data_tv"
+            android:layout_marginTop="10dp"
+            android:text="（*發票寄送）"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/cl_sp"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wrd_ui_phone" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cl_sp"
+            android:layout_width="120dp"
+            android:layout_height="0dp"
+            android:background="@color/white"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_wrd_ui_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_wrd_ui_email">
+
+            <Spinner
+                android:id="@+id/sp_address_email"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <EditText
+            android:id="@+id/et_wrd_ui_email"
+            style="@style/write_user_data_et"
+            android:layout_width="0dp"
+            android:layout_marginTop="10dp"
+            android:hint="請填寫"
+            android:paddingStart="10dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/tv_wrd_ui_email"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_wrd_ui_email" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/bt_rt_next"
+        style="@style/video_reserve_bottom_button"
+        android:layout_marginTop="10dp"
+        android:text="下一步：上傳診前資訊"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

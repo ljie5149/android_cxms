@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_title"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/icon_circle_macular_pigment_vector"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_macular_pigment_time"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_macular_pigment_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/circle_macular_pigment"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/iv_title"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
+    <TextView
+        android:id="@+id/tv_macular_pigment_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="-"
+        android:paddingBottom="10dp"
+        app:layout_constraintStart_toStartOf="@+id/tv_macular_pigment_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_macular_pigment_title" />
+
+    <TextView
+        android:id="@+id/tv_macular_pigment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="-"
+        android:textColor="@android:color/holo_red_light"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_macular_pigment_title"
+        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/tv_macular_pigment_title" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="sans-serif-black"
+        android:text="@string/unit_mpod"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_macular_pigment_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tv_macular_pigment_title" />
+
+    <TextView
+        android:id="@+id/tv_left_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="左眼"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/iv_title"
+        app:layout_constraintTop_toTopOf="@+id/cb_bpod_left_eye" />
+
+    <com.jotangi.cxms.ui.home.bar.MacularPigmentColorBar
+        android:id="@+id/cb_bpod_left_eye"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/tv_left_eye"
+        app:layout_constraintTop_toBottomOf="@+id/iv_title" />
+
+    <TextView
+        android:id="@+id/tv_right_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="右眼"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/iv_title"
+        app:layout_constraintTop_toTopOf="@+id/cb_bpod_right_eye" />
+
+    <com.jotangi.cxms.ui.home.bar.MacularPigmentColorBar
+        android:id="@+id/cb_bpod_right_eye"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toEndOf="@+id/tv_right_eye"
+        app:layout_constraintTop_toBottomOf="@+id/cb_bpod_left_eye" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView5"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="-6dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_lcv_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cb_bpod_right_eye">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:alpha="0.6"
+            android:background="@drawable/background_illustrate_hr"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_bone_density_legend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="@string/legend_macular_pigment"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <TextView
+        android:id="@+id/tv_lcv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-10dp"
+        android:text="近7次黃斑部色素測量"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/iv_title"
+        app:layout_constraintBottom_toTopOf="@+id/line_chart_view" />
+
+    <View
+        android:id="@+id/view4"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:background="@drawable/shape_line_sleep_deep"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_lcv_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_left_eye_legend"
+        app:layout_constraintTop_toTopOf="@+id/tv_lcv_title" />
+
+    <TextView
+        android:id="@+id/tv_left_eye_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:text="左眼"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_lcv_title"
+        app:layout_constraintEnd_toStartOf="@+id/v_right_eye_legend"
+        app:layout_constraintTop_toTopOf="@+id/tv_lcv_title" />
+
+    <View
+        android:id="@+id/v_right_eye_legend"
+        android:layout_width="30dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/shape_line_right_eye"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_lcv_title"
+        app:layout_constraintEnd_toStartOf="@+id/tv_right_eye_legend"
+        app:layout_constraintTop_toTopOf="@+id/tv_lcv_title" />
+
+    <TextView
+        android:id="@+id/tv_right_eye_legend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="右眼"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_lcv_title"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintTop_toTopOf="@+id/tv_lcv_title" />
+
+    <com.jotangi.cxms.ui.home.bar.MacularPigmentLineChartView
+        android:id="@+id/line_chart_view"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="-16dp"
+        app:layout_constraintBottom_toTopOf="@+id/bt_insert_data" />
+
+    <Button
+        android:id="@+id/bt_insert_data"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/shape_round_hr"
+        android:text="@string/insert_data_no_auto"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/rounded_background"
+    android:layout_marginBottom="10dp"
+>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/txtTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="時間: 2024-03-18 10:24:12"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/txtPoints"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="點數: 600"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/txtSource"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="來源: 註冊會員"
+        android:textSize="14sp" />
+</LinearLayout>

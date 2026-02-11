@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1043125266269",
+    "project_id": "cxms-ef903",
+    "storage_bucket": "cxms-ef903.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043125266269:android:1f4cc3164529fdc57beab4",
+        "android_client_info": {
+          "package_name": "com.jotangi.cxms"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSDBZM-9jkTUNG1LDrY0dtU5Havvj7vCU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

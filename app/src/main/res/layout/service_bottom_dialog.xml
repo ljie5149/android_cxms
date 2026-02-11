@@ -1,0 +1,45 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvCustomerService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="客服專線"
+        android:textSize="12sp"
+        android:textAppearance="?attr/textAppearanceHeadline6"
+        android:gravity="center"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/tvServiceLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="客服專線"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="@android:color/holo_blue_dark"/>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tvLineAt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Line @"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="@android:color/holo_blue_dark"/>
+
+    <TextView
+        android:id="@+id/tvCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="關閉"
+        android:gravity="center"
+        android:padding="12dp"
+        android:textColor="#000000"/>
+</LinearLayout>
