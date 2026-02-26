@@ -71,6 +71,7 @@ class CalendarFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val btnReserve = view.findViewById<TextView>(R.id.btn_reserve)
+        clearParam()
         btnReserve.setOnClickListener {
             if(reserveDate.isNullOrEmpty()
                 || reserveTime.isNullOrEmpty()
@@ -107,6 +108,7 @@ class CalendarFragment : BaseFragment() {
         bookViewModel.workingDayLiveData.observe(viewLifecycleOwner) { workingDays ->
             Log.d("micCheckJH", workingDays.toString())
             binding.progressBar.visibility = View.GONE // Hide progress bar when data is loaded
+            binding.spinner.visibility = View.GONE // Hide progress bar when data is loaded
 
             if (workingDays.isNotEmpty()) {
                 Log.d("micCheckkJJ", workingDays.toString())
@@ -189,6 +191,7 @@ class CalendarFragment : BaseFragment() {
 
         binding.calendarView.setOnDateChangedListener { _, date, _ ->
             val selectedDate = date.date.toString()
+            binding.spinner.visibility = View.GONE
 
             if (availableDates.contains(selectedDate)) {
                 reserveDate = selectedDate
@@ -264,30 +267,103 @@ class CalendarFragment : BaseFragment() {
     }
 
 
-    private fun updateSpinnerWithTimeSlots(timePeriods: List<TimePeriod>) {
-        val adapter = ArrayAdapter(
-            requireContext(),
-            android.R.layout.simple_spinner_item,
-            timePeriods.map { it.starttime.substringBeforeLast(":") } // Show formatted starttime
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.spinner.adapter = adapter
+    private fun updateSpinnerWithTimeSlots(timePeriods: List<TimePeriod>) {// 1️⃣ 先建立過濾後清單（很重要）
+        val fullReservation = "額滿"
+        val filteredTimePeriods = timePeriods
+            .filter { it.reservation_limit.toIntOrNull() ?: 0 > 0 }
+        if (filteredTimePeriods.isEmpty()) {
+            // 🔴 沒有可預約時段 → 隱藏 Spinner
+            binding.spinner.visibility = View.GONE
 
-        // Handle item selection
-        binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                val selectedTimePeriod = timePeriods[position]
-                val starttime = selectedTimePeriod.starttime
-                val endtime = selectedTimePeriod.endtime
-reserveTime = starttime
-                reserveEndTime = endtime
-                // Assign starttime and endtime to variables
-                Log.d("micCheckTime", "Start Time: $starttime, End Time: $endtime")
-                // You can now use starttime and endtime as needed
+        } else {
+            // 🟢 有資料才顯示
+            binding.spinner.visibility = View.VISIBLE
+            val adapter = object : ArrayAdapter<TimePeriod>(
+                requireContext(),
+                android.R.layout.simple_spinner_item,
+                filteredTimePeriods
+            ) {
+
+                override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getView(position, convertView, parent)
+                    val textView = view.findViewById<TextView>(android.R.id.text1)
+
+                    val item = getItem(position)
+                    val startTime = item?.starttime?.substringBeforeLast(":") ?: ""
+
+                    val limit = item?.reservation_limit?.toIntOrNull() ?: 0
+                    val count = item?.count?: 0
+
+                    if (limit == count && limit != 0) {
+                        textView.text = "$startTime (額滿)"
+                        textView.setTextColor(Color.RED)
+                    } else {
+                        textView.text = startTime
+                        textView.setTextColor(Color.BLACK)
+                    }
+
+                    return view
+                }
+
+                override fun getDropDownView(position: Int, convertView: View?, parent: ViewGroup): View {
+                    val view = super.getDropDownView(position, convertView, parent)
+                    val textView = view.findViewById<TextView>(android.R.id.text1)
+
+                    val item = getItem(position)
+                    val startTime = item?.starttime?.substringBeforeLast(":") ?: ""
+
+                    val limit = item?.reservation_limit?.toIntOrNull() ?: 0
+                    val count = item?.count ?: 0
+
+                    if (limit == count && limit != 0) {
+                        textView.text = "$startTime (額滿)"
+                        textView.setTextColor(Color.RED)
+                    } else {
+                        textView.text = startTime
+                        textView.setTextColor(Color.BLACK)
+                    }
+
+                    return view
+                }
             }
+//            val adapter = ArrayAdapter(
+//                requireContext(),
+//                android.R.layout.simple_spinner_item,
+//                filteredTimePeriods
+//                    .map { it.starttime.substringBeforeLast(":") } // Show formatted starttime
+//            )
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            binding.spinner.adapter = adapter
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {
-                // Do nothing
+            // Handle item selection
+            binding.spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    val selectedTimePeriod = filteredTimePeriods[position]
+                    val limit = selectedTimePeriod.reservation_limit.toIntOrNull() ?: 0
+                    val count = selectedTimePeriod.count ?: 0
+
+                    if (limit == count && limit != 0) {
+                        Toast.makeText(requireContext(), "此時段已額滿", Toast.LENGTH_SHORT).show()
+                        return
+                    }
+
+                    val starttime = selectedTimePeriod.starttime
+                    val endtime = selectedTimePeriod.endtime
+                    reserveTime = starttime
+                    reserveEndTime = endtime
+                    // Assign starttime and endtime to variables
+                    Log.d("micCheckTime", "Start Time: $starttime, End Time: $endtime")
+                    // You can now use starttime and endtime as needed
+                }
+
+                override fun onNothingSelected(parent: AdapterView<*>?) {
+                    // Do nothing
+                }
             }
         }
     }
@@ -351,5 +427,12 @@ reserveTime = starttime
         }
     }
 
+    private fun clearParam() {
+        reserveDate = ""
+        reserveTime = ""
+        reserveEndTime = ""
+        memberPhone = ""
+        memberName = ""
+    }
 
 }

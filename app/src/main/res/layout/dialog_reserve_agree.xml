@@ -81,7 +81,7 @@
             tools:text="醫師姓名：劉大王" />
 
         <TextView
-            android:id="@+id/tv_reserve_id"
+            android:id="@+id/tv_reserve_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -91,15 +91,28 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_doctor"
             tools:text="預約號碼：0020" />
 
+        <TextView
+            android:id="@+id/tv_reserve_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:textSize="@dimen/dialog_txt"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reserve_state"
+            tools:text="預約號碼：0020" />
+
         <CheckBox
             android:id="@+id/xb_agree"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:layout_marginTop="16dp"
+            android:text="同意本次門診全程錄音，\n並於診所APP觀看摘要。\n所有錄音內容，將不會作\n為其他非醫療用途之使用"
             android:textSize="@dimen/dialog_txt"
             android:buttonGravity="top"
-            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_reserve_id"
             tools:text="同意本次門診全程錄音，\n並於診所APP觀看摘要。\n所有錄音內容，將不會作\n為其他非醫療用途之使用" />
         <TextView
@@ -109,8 +122,10 @@
             android:textColor="@color/red"
             android:layout_marginTop="16dp"
             android:textSize="@dimen/dialog_txt"
+            android:text="系統提示 : 尚未勾選同意鈕"
             android:visibility="gone"
-            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/xb_agree"
             tools:text="系統提示 : 尚未勾選同意鈕" />
 

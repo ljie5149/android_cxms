@@ -258,9 +258,14 @@ class MemberFragment : BaseFragment() {
         }
 
         bookViewModel.memberInfoDataList.observe(viewLifecycleOwner) {
-
-            Picasso.get().load(ApiConstant.MUG_SHOT_URL + it[0].member_picture)
+            val imageUrl = ApiConstant.MUG_SHOT_URL + it[0].member_picture
+            Log.d("ImageURL", imageUrl)
+            Picasso.get()
+                .load(imageUrl)
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_foreground)
                 .into(binding.sivPhoto)
+
 
             SharedPreferencesUtil.instances.setAccountMid(it[0].mid)
         }

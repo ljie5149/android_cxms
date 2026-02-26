@@ -118,6 +118,7 @@
                 app:layout_constraintTop_toBottomOf="@id/tv_point_change" />
 
             <ImageView
+                android:visibility="gone"
                 style="@style/ivMemberArrowIcon"
                 app:layout_constraintEnd_toEndOf="@id/tv_point_record"
                 app:layout_constraintTop_toTopOf="@+id/tv_point_record" />
@@ -156,6 +157,7 @@
                 style="@style/tvMemberList"
                 android:text="使用者條款"
                 app:layout_constraintEnd_toEndOf="@id/gl_end_95"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@id/gl_start_5"
                 app:layout_constraintTop_toBottomOf="@id/tvWatch" />
 

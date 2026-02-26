@@ -151,7 +151,39 @@ object ConvertText {
             }
         } catch (e: Exception) {}
         return date_str
-    }fun getTaiwanDate(input_date: String, contact_symbol: String = "-"): String {
+    }
+    fun getDateByOffset(
+        baseDate: String? = null,   // 不傳 = 今天
+        offsetDays: Long,           // 正數=加天 負數=減天
+        pattern: String = "yyyy-MM-dd"
+    ): String {
+        return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+
+            val formatter = DateTimeFormatter.ofPattern(pattern)
+
+            val date = if (baseDate.isNullOrEmpty()) {
+                LocalDate.now()
+            } else {
+                LocalDate.parse(baseDate, formatter)
+            }
+
+            date.plusDays(offsetDays)
+                .format(formatter)
+
+        } else {
+
+            val sdf = SimpleDateFormat(pattern, Locale.getDefault())
+            val calendar = Calendar.getInstance()
+
+            if (!baseDate.isNullOrEmpty()) {
+                calendar.time = sdf.parse(baseDate)!!
+            }
+
+            calendar.add(Calendar.DAY_OF_YEAR, offsetDays.toInt())
+            sdf.format(calendar.time)
+        }
+    }
+    fun getTaiwanDate(input_date: String, contact_symbol: String = "-"): String {
         return try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
 
@@ -245,5 +277,19 @@ object ConvertText {
     fun clearByteArray(originalArray: ByteArray): ByteArray {
         val newSize = originalArray.size
         return ByteArray(newSize) { 0 }
+    }
+    // ---------------------------------------------------------
+
+    fun changeChinaDate(str: String): String {
+
+        return try {
+            val year = str.substring(0, 3).toInt() + 1911
+            val month = str.substring(3, 5)
+            val day = str.substring(5, 7)
+            "${year}/${month}/${day}"
+        } catch (e: kotlin.Exception) {
+            e.printStackTrace()
+            ""
+        }
     }
 }

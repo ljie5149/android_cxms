@@ -7,7 +7,7 @@ class ApiUrl {
         /**
          * 診所
          */
-        const val c_sid = "147"
+        const val c_sid = "157" // 157:禾欣骨科 147:智醫
 
         /**
          * 結果

@@ -261,7 +261,7 @@ data class HisRegistrationBean(
  */
 @Parcelize
 data class HisRegistrationListData(
-    var list: List<HisRegistrationListBean> = arrayListOf(),
+    var list: List<HisRegistrationListBean> = arrayListOf()
 ) : Parcelable, OpenBookResponse()
 
 @Parcelize
@@ -280,7 +280,7 @@ data class HisRegistrationListBean(
     var 是否可退掛: String? = null,
     var 不可退掛原因: String? = null,
     var 當班否: String? = null
-) : Parcelable
+) : Parcelable, OpenBookResponse()
 
 /**
  * (24)	Tours app 查詢HIS系統的醫院排班的醫師資料

@@ -9,7 +9,9 @@ import com.jotangi.cxms.Api.book.ItemListBean
 import com.jotangi.cxms.BaseFragment
 import com.jotangi.cxms.databinding.FragmentWaitCheckBinding
 import com.jotangi.cxms.databinding.ToolbarBinding
+import com.jotangi.cxms.jackyVariant.ConvertText
 import com.jotangi.cxms.utils.constant.CheckType
+import org.simpleframework.xml.convert.Convert
 
 class WaitCheckFragment : BaseFragment() {
 
@@ -58,10 +60,10 @@ class WaitCheckFragment : BaseFragment() {
             var count = 0
 
             for (i in it.indices) {
-                if (date != changeChinaDate(it[i].日期.toString())) {
+                if (date != ConvertText.changeChinaDate(it[i].日期.toString())) {
 
                     count = 1
-                    date = changeChinaDate(it[i].日期.toString())
+                    date = ConvertText.changeChinaDate(it[i].日期.toString())
                 } else {
 
                     count++
@@ -88,19 +90,6 @@ class WaitCheckFragment : BaseFragment() {
                 if (list.isEmpty()) cl.visibility = View.GONE
                 else cl.visibility = View.VISIBLE
             }
-        }
-    }
-
-    private fun changeChinaDate(str: String): String {
-
-        return try {
-            val year = str.substring(0, 3).toInt() + 1911
-            val month = str.substring(3, 5)
-            val day = str.substring(5, 7)
-            "${year}/${month}/${day}"
-        } catch (e: Exception) {
-            e.printStackTrace()
-            ""
         }
     }
 

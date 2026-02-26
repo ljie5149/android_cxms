@@ -188,7 +188,7 @@ class BookViewModel(var bookApiRepository: BookApiRepository) : ViewModel() {
 
         val hrlRes = bookApiRepository.hisRegistrationList2()
         val swbRes = bookApiRepository.sleepWellBookingList()
-        val hrlList = hrlRes.list.filter { it.是否可退掛 == "Y" }
+        val hrlList = hrlRes.filter { it.是否可退掛 == "Y" }
 
         when {
 
@@ -231,7 +231,7 @@ class BookViewModel(var bookApiRepository: BookApiRepository) : ViewModel() {
 
         val hrlRes = bookApiRepository.hisRegistrationList2()
         val swbRes = bookApiRepository.sleepWellBookingList()
-        val hrlList = hrlRes.list.filter { it.是否可退掛 == "Y" }
+        val hrlList = hrlRes.filter { it.是否可退掛 == "Y" }
 
         val list = arrayListOf<ComplexRegisterListData>()
 
@@ -341,9 +341,9 @@ class BookViewModel(var bookApiRepository: BookApiRepository) : ViewModel() {
 
         val response = bookApiRepository.hisRegistrationList2()
 
-        if (response.code == "0x0200" && response.list.isNotEmpty()) {
+        if (response.isNotEmpty()) {
 
-            val registerList = response.list.filter { it.是否可退掛 == "Y" }
+            val registerList = response.filter { it.是否可退掛 == "Y" }
 
             hisRegistrationListLD.postValue(registerList)
 
@@ -351,7 +351,7 @@ class BookViewModel(var bookApiRepository: BookApiRepository) : ViewModel() {
         } else {
 
             hisRegistrationListLD.postValue(listOf())
-            fail(response.responseMessage.toString())
+//            fail(response.responseMessage.toString())
         }
     }
 
@@ -722,9 +722,9 @@ class BookViewModel(var bookApiRepository: BookApiRepository) : ViewModel() {
 
     suspend fun getBookingRecord5(sid:Int, did:Int) {
         val data = bookApiRepository.getBookingList5(sid, did)
-        if (data.isNotEmpty()) {
+//        if (data.isNotEmpty()) {
             bookingRecordLiveData5.postValue(data)
-        }
+//        }
     }
 
     suspend fun getBookingRecord5All(sid:Int) {

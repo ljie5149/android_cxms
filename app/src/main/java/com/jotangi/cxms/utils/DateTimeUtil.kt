@@ -1,5 +1,6 @@
 package com.jotangi.cxms.utils
 
+import com.jotangi.cxms.utils.smartwatch.WatchUtils
 import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.LocalTime
@@ -50,17 +51,31 @@ class DateTimeUtil private constructor() {
     }
 
     fun chinaDate(time: String): String {
-
         var clipTime = ""
         try {
-            val sdf = SimpleDateFormat(DateType.YMD.key, Locale.getDefault())
-            val sdfHm = SimpleDateFormat(DateType.YMDc.key, Locale.getDefault())
-            val sdfe = SimpleDateFormat(DateType.W.key, Locale.getDefault())
-            sdf.parse(time)?.let {
-                clipTime = "${sdfHm.format(it)}(${sdfe.format(it).substring(2)})"
+            val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.TAIWAN)
+            val date = inputFormat.parse(time) ?: return ""
+
+            val calendar = Calendar.getInstance()
+            calendar.time = date
+
+            val dateFormat = SimpleDateFormat("yyyy年MM月dd日", Locale.TAIWAN)
+
+            val weekDay = when (calendar.get(Calendar.DAY_OF_WEEK)) {
+                Calendar.SUNDAY -> "日"
+                Calendar.MONDAY -> "一"
+                Calendar.TUESDAY -> "二"
+                Calendar.WEDNESDAY -> "三"
+                Calendar.THURSDAY -> "四"
+                Calendar.FRIDAY -> "五"
+                Calendar.SATURDAY -> "六"
+                else -> ""
             }
+
+            clipTime = "${dateFormat.format(date)}(${weekDay.format(date)})"
+
         } catch (e: Exception) {
-            e.printStackTrace()
+            clipTime = ""
         }
 
         return clipTime
@@ -118,23 +133,50 @@ class DateTimeUtil private constructor() {
     }
 
     fun chinaToYmd(time: String): String {
-
-        return try {
-            LocalDate.of(
-                time.substring(0, 3).toInt() + 1911,
-                time.substring(3, 5).toInt(),
-                time.substring(5, 7).toInt()
+        if (time.length == 8) {
+            return yyyyMMDDToyyyy_MM_DD(time)
+        } else {
+            return try {
+                LocalDate.of(
+                    time.substring(0, 3).toInt() + 1911,
+                    time.substring(3, 5).toInt(),
+                    time.substring(5, 7).toInt()
+                ).toString()
+            } catch (e: Exception) {
+                e.printStackTrace()
+                ""
+            }
+        }
+    }
+    fun yyyyMMDDToyyyy_MM_DD(time: String): String {
+        val year = time.substring(0, 4).toInt()
+        val month = time.substring(4, 6).toInt()
+        val date = time.substring(6, 8).toInt()
+        try {
+            val ret = LocalDate.of(
+                time.substring(0, 4).toInt(),
+                time.substring(4, 6).toInt(),
+                time.substring(6, 8).toInt()
             ).toString()
+            return ret
         } catch (e: Exception) {
             e.printStackTrace()
-            ""
+            return ""
         }
+//        return try {
+//            LocalDate.of(
+//                time.substring(0, 4).toInt(),
+//                time.substring(4, 6).toInt(),
+//                time.substring(6, 8).toInt()
+//            ).toString()
+//        } catch (e: Exception) {
+//            e.printStackTrace()
+//            ""
+//        }
     }
 
     fun ymdToChinaYmdw(time: String): String{
-
         return try {
-
             LocalDate.parse(time).format(
                 DateTimeFormatter.ofPattern(
                     "yyyy年MM月dd日(E)"

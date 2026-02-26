@@ -20,12 +20,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="掛號成功"
+            android:text="送出成功"
             android:textColor="@color/black"
             android:textSize="@dimen/dialog_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:text="(請注意掛號成功資訊)"
+            android:textColor="@color/sleep_well_blue"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <TextView
             android:id="@+id/tv_date"
@@ -36,7 +48,7 @@
             android:textSize="@dimen/dialog_txt"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_title"
+            app:layout_constraintTop_toBottomOf="@+id/tv_hint"
             tools:text="日期：2022年 12月 14日" />
 
         <TextView
@@ -79,6 +91,16 @@
             app:layout_constraintStart_toStartOf="@+id/tv_date"
             app:layout_constraintTop_toBottomOf="@+id/tv_division_count"
             tools:text="醫師姓名：劉大王" />
+        <TextView
+            android:id="@+id/tv_reserve_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginTop="16dp"
+            android:textSize="@dimen/dialog_txt"
+            app:layout_constraintStart_toStartOf="@+id/tv_date"
+            app:layout_constraintTop_toBottomOf="@+id/tv_doctor"
+            tools:text="預約號碼：0020" />
 
         <TextView
             android:id="@+id/tv_reserve_id"
@@ -88,7 +110,7 @@
             android:layout_marginTop="16dp"
             android:textSize="@dimen/dialog_txt"
             app:layout_constraintStart_toStartOf="@+id/tv_date"
-            app:layout_constraintTop_toBottomOf="@+id/tv_doctor"
+            app:layout_constraintTop_toBottomOf="@+id/tv_reserve_state"
             tools:text="預約號碼：0020" />
 
         <View

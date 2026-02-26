@@ -38,6 +38,7 @@ class AppointmentFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupMarketChangePointTitle("查詢/取消預約")
+        binding.tvNoData.visibility = View.GONE
         setupSpinner()
         setupRecyclerView()
         initObserve()
@@ -66,7 +67,8 @@ class AppointmentFragment : BaseFragment() {
 
             if (apiData.isNullOrEmpty()) {
                 adapter.updateData(emptyList()) // Clear RecyclerView
-                Toast.makeText(requireContext(), "沒有資料", Toast.LENGTH_SHORT).show() // Show toast
+                binding.tvNoData.visibility = View.VISIBLE
+//                Toast.makeText(requireContext(), "沒有資料", Toast.LENGTH_SHORT).show() // Show toast
                 return@observe
             }
 
@@ -133,6 +135,7 @@ class AppointmentFragment : BaseFragment() {
                 if (selectedDid.isNotEmpty()) {
                     lifecycleScope.launch {
                         adapter.updateData(emptyList())
+                        binding.tvNoData.visibility = View.VISIBLE
                         Log.d("micCheckJJ",ApiUrl.c_sid.toInt().toString()+ selectedDid.toInt().toString())
                         bookViewModel.getBookingRecord5(ApiUrl.c_sid.toInt(), selectedDid.toInt())
                     }

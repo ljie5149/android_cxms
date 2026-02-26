@@ -2,6 +2,8 @@ package com.jotangi.cxms.Api.book
 
 import android.content.ContentValues.TAG
 import android.util.Log
+import com.google.common.reflect.TypeToken
+import com.google.gson.Gson
 import com.jotangi.cxms.Api.ApiUrl
 import com.jotangi.cxms.Api.AppClientManager
 import com.jotangi.cxms.Api.book.apirequest.HisPhysicianListRequest
@@ -19,6 +21,7 @@ import com.jotangi.cxms.Api.book.apiresponse.GetStoreApplyListBeen
 import com.jotangi.cxms.Api.book.apiresponse.GetUidpwd2Response
 import com.jotangi.cxms.Api.book.apiresponse.HisOplistData
 import com.jotangi.cxms.Api.book.apiresponse.HisRegistrationData
+import com.jotangi.cxms.Api.book.apiresponse.HisRegistrationListBean
 import com.jotangi.cxms.Api.book.apiresponse.HisRegistrationListData
 import com.jotangi.cxms.Api.book.apiresponse.MemberInfoData
 import com.jotangi.cxms.Api.book.apiresponse.OpenBookResponse
@@ -28,6 +31,7 @@ import com.jotangi.cxms.Api.book.apiresponse.SleepWellWorkingDayBean
 import com.jotangi.cxms.Api.book.apiresponse.SleepWellWorkingDayData
 import com.jotangi.cxms.StoreMangerUi.googlevision.StationListResponse
 import com.jotangi.cxms.jackyVariant.Common
+import com.jotangi.cxms.jackyVariant.ConvertText
 import com.jotangi.cxms.ui.AddOrderResponse
 import com.jotangi.cxms.ui.BookingRecordData5
 import com.jotangi.cxms.ui.PointTransaction
@@ -48,6 +52,7 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 import java.time.LocalDate
+import kotlin.math.log
 
 class BookApiRepository {
 
@@ -274,18 +279,44 @@ Log.d("micCheckKKK", Common.getToken())
     /**
      * (15)	Tours app 查詢HIS系統的掛號資料
      */
-    suspend fun hisRegistrationList2(): HisRegistrationListData {
-        val tok = Common.getToken()
+    suspend fun hisRegistrationList2(): List<HisRegistrationListBean> {
         return try {
+            var ret: List<HisRegistrationListBean>
             val baseRequest = BaseBookRequest()
-            AppClientManager.instance.bookService.hisRegistrationList2(
-                tok,
-                baseRequest.member_pid,
-                baseRequest.member_pwd,
-                ApiUrl.c_sid
+            val memberId = baseRequest.member_pid ?: ""
+            val memberPwd = baseRequest.member_pwd ?: ""
+            val sid = ApiUrl.c_sid ?: ""
+            val auth_token = Common.getToken()
+            val rawResponse = AppClientManager.instance.bookService.hisRegistrationList2Raw(
+                auth_token,
+                memberId,
+                memberPwd,
+                sid
             )
+
+            if (rawResponse.isSuccessful) {
+                val jsonString = rawResponse.body()?.string()
+                val gson = Gson()
+                val list: List<HisRegistrationListBean> = gson.fromJson(
+                    jsonString,
+                    object : TypeToken<List<HisRegistrationListBean>>() {}.type
+                )
+                ret = list
+                Log.d("RawHisResponse", jsonString ?: "Empty response")
+            } else {
+                ret = emptyList()
+                Log.e("RawHisResponseError", rawResponse.errorBody()?.string() ?: "Unknown error")
+            }
+            ret
+//            AppClientManager.instance.bookService.hisRegistrationList2(
+//                Common.getToken(),
+//                baseRequest.member_pid,
+//                baseRequest.member_pwd,
+//                ApiUrl.c_sid
+//            )
         } catch (e: Exception) {
-            HisRegistrationListData()
+            e.printStackTrace()
+            emptyList() // 發生錯誤回傳空列表
         }
     }
 
@@ -654,7 +685,7 @@ Log.d("micCheckKKK", Common.getToken())
             val baseRequest = BaseBookRequest()
             AppClientManager.instance.bookService.divisionDoctor(
                 Common.getToken(),
-                baseRequest.member_id,
+                baseRequest.member_pid,
                 baseRequest.member_pwd,
                 ApiUrl.c_sid
             )
@@ -670,16 +701,24 @@ Log.d("micCheckKKK", Common.getToken())
         division_name: String?,
         doctor_name: String?
     ): List<PhysicianScheduleData> {
+        var v_startd = ""
+        var v_endd = ""
+        if (Common.query30day) {
+            v_endd = ConvertText.getFormattedDate("")
+            v_startd = ConvertText.getDateByOffset(v_endd, -30)
+        }
         return try {
             val baseRequest = BaseBookRequest()
             Log.d("micCheckHH", "toekn :" + Common.getToken() + "id :" + baseRequest.member_id+ "pwd"+ baseRequest.member_pwd+"sid :" + ApiUrl.c_sid+"div :"+ division_name +"doc :" + doctor_name)
             AppClientManager.instance.bookService.physicianSchedule(
                 Common.getToken(),
-                baseRequest.member_id,
+                baseRequest.member_pid,
                 baseRequest.member_pwd,
                 ApiUrl.c_sid,
                 division_name,
-                doctor_name
+                doctor_name,
+                v_startd,
+                v_endd
             )
         } catch (e: Exception) {
             listOf()
@@ -843,6 +882,7 @@ Log.d("micCheckKKK", Common.getToken())
                 baseRequest.member_pwd
             )
         } catch (e: Exception) {
+            Log.d(TAG, "jacky ${e.toString()}")
             arrayListOf()
         }
     }
@@ -1279,7 +1319,7 @@ Log.d("micCheckKKK", Common.getToken())
             val baseRequest = BaseBookRequest()
             AppClientManager.instance.bookService.getDivisionList(
                 Common.getToken(),
-                baseRequest.member_id,
+                baseRequest.member_pid,
                 baseRequest.member_pwd,
                 ApiUrl.c_sid
             )
@@ -1568,11 +1608,12 @@ Log.d("micCheckKKK", Common.getToken())
     suspend fun getMsgBoxList(): List<NotifyHistoryListVO> {
         return try {
             val baseRequest = BaseBookRequest()
-            AppClientManager.instance.bookService.getMsgBoxList(
+            val resp = AppClientManager.instance.bookService.getMsgBoxList(
                 Common.getToken(),
-                baseRequest.member_id,
+                baseRequest.member_pid,
                 baseRequest.member_pwd
             )
+            resp.list!!
         } catch (e: Exception) {
             e.printStackTrace()
             arrayListOf()

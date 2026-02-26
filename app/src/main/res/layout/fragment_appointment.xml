@@ -45,6 +45,20 @@
 
         />
 
+    <TextView
+        android:textSize="20sp"
+        android:id="@+id/tv_no_data"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/grey"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/record_txt"
+        android:text="-暫無預約紀錄-"
+        />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginBottom="30dp"
         android:layout_marginLeft="20dp"

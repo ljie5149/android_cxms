@@ -490,8 +490,9 @@ class DialogUtil private constructor() {
             .setView(binding.root)
             .create()
 
+        val date_s = DateTimeUtil.instance.chinaToYmd(day)
         binding.apply {
-            tvDate.text = "日期：$day"
+            tvDate.text = "日期：$date_s"
             tvTime.text = "看診時段：${
                 when (data.班別) {
                     "上午診" -> "早診"
@@ -534,14 +535,18 @@ class DialogUtil private constructor() {
             .setView(binding.root)
             .create()
 
+        val date_s = DateTimeUtil.instance.chinaToYmd(day)
         binding.apply {
 
-            tvDate.text = "日期：$day"
+            tvDate.text = "日期：$date_s"
             tvTime.text = "看診時段：${data.班別}"
             tvDivision.text = "科別：${data.科別}"
 //            tvDivisionCount.text = "診次：${data.診別}"
             tvDoctor.text = "醫師姓名：${data.醫師}"
+            val state = if (data.掛號序號 == "0000") "預約狀態：待掛號" else "預約狀態：掛號成功"
+            tvReserveState.text = state
             tvReserveId.text = "預約號碼：${data.掛號序號}"
+            tvReserveId.visibility = if (data.掛號序號 == "0000") View.GONE else View.VISIBLE
 
             tvCancel.setOnClickListener {
                 ad.dismiss()
@@ -573,9 +578,10 @@ class DialogUtil private constructor() {
             .setView(binding.root)
             .create()
 
+        val date_s = if (!day.isNullOrEmpty()) DateTimeUtil.instance.chinaToYmd(day) else ""
         binding.apply {
 
-            tvDate.text = "日期：$day"
+            tvDate.text = "日期：$date_s"
             tvTime.text = "看診時段：${data.班別}"
             tvDivision.text = "科別：${data.科別}"
 //            tvDivisionCount.text = "診次：${data.診別}"
@@ -583,6 +589,11 @@ class DialogUtil private constructor() {
             tvReserveId.text = "預約號碼：${data.掛號序號}"
             xbAgree.visibility = View.VISIBLE
             tvAgreeHint.visibility = View.GONE
+
+            val state = if (data.掛號序號 == "0000") "預約狀態：待掛號" else "預約狀態：掛號成功"
+            tvReserveState.text = state
+            tvReserveId.text = "預約號碼：${data.掛號序號}"
+            tvReserveId.visibility = if (data.掛號序號 == "0000") View.GONE else View.VISIBLE
 
             tvCancel.setOnClickListener {
                 ad.dismiss()
@@ -622,7 +633,9 @@ class DialogUtil private constructor() {
             tvTime.text = "看診時段：${data.班別}"
             tvDivision.text = "科別：${data.科別}"
             tvDoctor.text = "醫師：${data.醫師名}"
+            tvState.text = "預約狀態：${data.目前狀態}"
             tvId.text = "預約號碼：${data.掛號序號}"
+            tvId.visibility = if (data.掛號序號 == "0000") View.GONE else View.VISIBLE
 
             tvCancel.setOnClickListener {
                 ad.dismiss()

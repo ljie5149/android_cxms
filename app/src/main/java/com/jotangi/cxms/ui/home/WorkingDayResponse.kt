@@ -9,6 +9,7 @@ data class WorkingDayResponse(
 data class TimePeriod(
     val starttime: String,
     val endtime: String,
+    val reservation_limit: String,
     val count: Int
 )
 

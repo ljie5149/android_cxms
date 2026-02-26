@@ -151,6 +151,7 @@ data class BookingInfoData(
 data class DivisionListData(
     var did: String? = null,
     var store_id: String? = null,
+    var gid: String? = null,
     var group_division: String? = null,
     var division_code: String? = null,
     var division_name: String? = null
@@ -358,6 +359,13 @@ data class CancelCaredMember(
 @Parcelize
 data class MessageBoxCountVO(
     var responseMessage: String = ""
+) : Parcelable, BaseBookResponse()
+
+// 通知數
+@Parcelize
+data class NotifyResponse(
+    var responseMessage: String = "",
+    var list : List<NotifyHistoryListVO>? = null
 ) : Parcelable, BaseBookResponse()
 
 // 取得通知清單

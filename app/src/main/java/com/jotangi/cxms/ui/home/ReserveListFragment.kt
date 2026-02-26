@@ -18,12 +18,16 @@ import com.jotangi.cxms.R
 import com.jotangi.cxms.databinding.FragmentReserveListBinding
 import com.jotangi.cxms.databinding.ToolbarBinding
 import com.jotangi.cxms.jackyVariant.Common
+import com.jotangi.cxms.jackyVariant.ConvertText
+import com.jotangi.cxms.utils.DateTimeUtil
 import com.jotangi.cxms.utils.DialogUtil
 import com.jotangi.cxms.utils.SharedPreferencesUtil
 import com.jotangi.cxms.utils.smartwatch.WatchUtils
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class ReserveListFragment : BaseFragment() {
 
@@ -64,11 +68,20 @@ class ReserveListFragment : BaseFragment() {
         }
 
         bookViewModel.physicianScheduleLD.value?.let {
-Log.d("micCheckK", it.toString())
+            Log.d("micCheckK", it.toString())
             list = it
             if (list.isEmpty()) {
                 setToolbarArrow("無資料")
                 return@let
+            }
+            val tomorrow = LocalDate.now().plusDays(1)
+
+            list = it.filter { item ->
+                val ymd = DateTimeUtil.instance.chinaToYmd(item.日期!!)
+                if (ymd.isEmpty()) return@filter false
+
+                val itemDate = LocalDate.parse(ymd)   // 不用 formatter
+                !itemDate.isBefore(tomorrow)
             }
 
             Log.w(TAG, "List: ${it}")
@@ -85,7 +98,7 @@ Log.d("micCheckK", it.toString())
 
             setToolbarArrow(name)
 
-            KiziCalendar.instance.init(it, binding.calendarView)
+            KiziCalendar.instance.init(list, binding.calendarView)
         }
     }
 
@@ -109,7 +122,7 @@ Log.d("micCheckK", it.toString())
             startActivity(
                 Intent(
                     Intent.ACTION_CALL,
-                    Uri.parse("tel:" + "03-333-0567")
+                    Uri.parse("tel:" + "03-358-6670")
                 )
             )
         }
@@ -118,7 +131,7 @@ Log.d("micCheckK", it.toString())
 
             DialogUtil.instance.reserve(
                 requireActivity(),
-                WatchUtils.instance.chinaDayToYmdw(it.日期.toString()),
+                it.日期.toString(),
                 it,
                 okClick = { data ->
                     hisRegistration(data)
@@ -151,23 +164,26 @@ Log.d("micCheckK", it.toString())
 
         dayList = dayList.toMutableList().apply {
 
-            add(AssignDayList.Title("早診"))
-
-            morningList.forEach { add(AssignDayList.Item(it)) }
+            if (morningList.size > 0) {
+                add(AssignDayList.Title("早診"))
+                morningList.forEach { add(AssignDayList.Item(it)) }
+            }
         }
 
         dayList = dayList.toMutableList().apply {
 
-            add(AssignDayList.Title("午診"))
-
-            noonList.forEach { add(AssignDayList.Item(it)) }
+            if (noonList.size > 0) {
+                add(AssignDayList.Title("午診"))
+                noonList.forEach { add(AssignDayList.Item(it)) }
+            }
         }
 
         dayList = dayList.toMutableList().apply {
 
-            add(AssignDayList.Title("晚診"))
-
-            nightList.forEach { add(AssignDayList.Item(it)) }
+            if (nightList.size > 0) {
+                add(AssignDayList.Title("晚診"))
+                nightList.forEach { add(AssignDayList.Item(it)) }
+            }
         }
 
         assignDayAdapter.submitList(dayList)
@@ -182,7 +198,7 @@ Log.d("micCheckK", it.toString())
                 bookViewModel.hisRegistration2(
                     HisRegistrationRequest(
                         Common.getToken(),
-                        WatchUtils.instance.ymdChinaToWestern(data.日期.toString()),
+                        data.日期.toString(),
                         data.排班識別碼!!
                     ),
                     success = {
@@ -191,7 +207,7 @@ Log.d("micCheckK", it.toString())
 
                             DialogUtil.instance.reserveHint(
                                 requireActivity(),
-                                WatchUtils.instance.ymdChinaToWestern(data.日期.toString()),
+                                data.日期.toString(),
                                 it,
                                 okClick = { data1 ->
 
@@ -208,14 +224,17 @@ Log.d("micCheckK", it.toString())
                                     )
                                     DialogUtil.instance.reserveAgree(
                                         requireActivity(),
-                                        WatchUtils.instance.ymdChinaToWestern(data.日期.toString()),
+                                        data.日期.toString(),
                                         it,
                                         okClick = { data2 ->
-                                            findNavController().navigate(
-                                                ReserveListFragmentDirections.actionReserveListFragmentToWebFragment(
-                                                    getString(R.string.pre_dia_question)
+                                            if (Common.ReservationSuccess2Questionnaire)
+                                                findNavController().navigate(
+                                                    ReserveListFragmentDirections.actionReserveListFragmentToWebFragment(
+                                                        getString(R.string.pre_dia_question)
+                                                    )
                                                 )
-                                            )
+                                            else
+                                                goHome()
                                         },
                                         cancelClick = {
                                             goHome()

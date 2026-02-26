@@ -14,6 +14,9 @@ import com.jotangi.cxms.ui.record.DataRecordResponseII
 import okhttp3.RequestBody
 import retrofit2.http.*
 
+import okhttp3.ResponseBody
+import retrofit2.Response
+
 // 醫電 API
 interface BookApiService {
 
@@ -175,12 +178,18 @@ interface BookApiService {
      */
     @FormUrlEncoded
     @POST("his_registration_list2.php")
-    suspend fun hisRegistrationList2(
+    suspend fun hisRegistrationList2Raw(
         @Header("x-api-key") auth_token: String,
         @Field("member_pid") id: String,
         @Field("member_pwd") pwd: String,
-        @Field("sid") sid: String,
-    ): HisRegistrationListData
+        @Field("sid") sid: String?
+    ): Response<ResponseBody>
+//    suspend fun hisRegistrationList2(
+//        @Header("x-api-key") auth_token: String,
+//        @Field("member_id") id: String,
+//        @Field("member_pwd") pwd: String,
+//        @Field("sid") sid: String?
+//    ): List<HisRegistrationListBean>
 
     /**
      * (16)	Tours app HIS系統的取消一般網路掛號
@@ -290,26 +299,28 @@ interface BookApiService {
      * (25)	Tours app 查詢系統的醫院科別與醫師資料
      */
     @FormUrlEncoded
-    @POST("division_doctor.php")
+    @POST("division_doctor2.php")
     suspend fun divisionDoctor(
         @Header("x-api-key") auth_token: String,
-        @Field("member_id") id: String,
+        @Field("member_pid") id: String,
         @Field("member_pwd") pwd: String,
-        @Field("sid") sid: String,
+        @Field("sid") sid: String
     ): List<DivisionDoctorData>
 
     /**
      * (26)	Tours app 查詢系統的醫院科別醫師的門診資料
      */
     @FormUrlEncoded
-    @POST("physician_schedule.php")
+    @POST("physician_schedule2.php")
     suspend fun physicianSchedule(
         @Header("x-api-key") auth_token: String,
-        @Field("member_id") id: String,
+        @Field("member_pid") id: String,
         @Field("member_pwd") pwd: String,
         @Field("sid") sid: String,
         @Field("division_name") division_name: String?,
         @Field("doctor_name") doctor_name: String?,
+        @Field("start_date") start_date: String?,
+        @Field("end_date") end_date: String?
     ): List<PhysicianScheduleData>
 
     @FormUrlEncoded
@@ -740,10 +751,10 @@ interface BookApiService {
     ): List<StationInfoData>
 
     @FormUrlEncoded
-    @POST("division_list.php")
+    @POST("division_list2.php")
     suspend fun getDivisionList(
         @Header("x-api-key") auth_token: String,
-        @Field("member_id") id: String,
+        @Field("member_pid") id: String,
         @Field("member_pwd") pwd: String,
         @Field("sid") sid: String?
     ): List<DivisionListData>
@@ -949,15 +960,15 @@ interface BookApiService {
     ): CancelCaredMember
 
     @FormUrlEncoded
-    @POST("msgbox_list.php")
+    @POST("msgbox_list2.php")
     suspend fun getMsgBoxList(
         @Header("x-api-key") auth_token: String,
-        @Field("member_id") id: String,
+        @Field("member_pid") id: String,
         @Field("member_pwd") pwd: String
-    ): List<NotifyHistoryListVO>
+    ): NotifyResponse
 
     @FormUrlEncoded
-    @POST("msgbox_count.php")
+    @POST("msgbox_count2.php")
     suspend fun getMessageBoxCount(
         @Header("x-api-key") auth_token: String,
         @Field("member_id") id: String,
@@ -965,7 +976,7 @@ interface BookApiService {
     ): MessageBoxCountVO
 
     @FormUrlEncoded
-    @POST("upd_msgbox.php")
+    @POST("upd_msgbox2.php")
     suspend fun updateMessageReadStatus(
         @Header("x-api-key") auth_token: String,
         @Field("member_id") id: String,

@@ -9,6 +9,7 @@ import androidx.work.WorkRequest
 import com.google.gson.Gson
 import com.jotangi.cxms.Api.ApiConnect
 import com.jotangi.cxms.Api.book.apirequest.StartEndData
+import com.jotangi.cxms.jackyVariant.Common
 import com.jotangi.cxms.utils.AppUtils
 import com.jotangi.cxms.utils.SharedPreferencesUtil
 import com.jotangi.cxms.utils.smartwatch.model.BPRequest
@@ -860,11 +861,27 @@ class WatchUtils private constructor() {
     }
 
     fun ymdChinaToWestern(date: String): String {
+        if (date.length == 8) {
+            return ymdToWestern(date.toString())
+        } else {
+            val calendar = Calendar.getInstance()
+            return try {
+                calendar.set(Calendar.YEAR, date.substring(0, 3).toInt() + 1911)
+                calendar.set(Calendar.MONTH, date.substring(3, 5).toInt() - 1)
+                calendar.set(Calendar.DATE, date.substring(5, 7).toInt())
+                currentYmd(calendar.time)
+            } catch (e: Exception) {
+                e.printStackTrace()
+                ""
+            }
+        }
+    }
+    fun ymdToWestern(date: String): String {
         val calendar = Calendar.getInstance()
         return try {
-            calendar.set(Calendar.YEAR, date.substring(0, 3).toInt() + 1911)
-            calendar.set(Calendar.MONTH, date.substring(3, 5).toInt() - 1)
-            calendar.set(Calendar.DATE, date.substring(5, 7).toInt())
+            calendar.set(Calendar.YEAR, date.substring(0, 4).toInt())
+            calendar.set(Calendar.MONTH, date.substring(4, 6).toInt() - 1)
+            calendar.set(Calendar.DATE, date.substring(6, 8).toInt())
             currentYmd(calendar.time)
         } catch (e: Exception) {
             e.printStackTrace()

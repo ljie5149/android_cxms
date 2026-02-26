@@ -71,11 +71,11 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField "String", "BOOK_API", '"https://clinic.healthme.com.tw/medicalec/api2/"'
+            buildConfigField "String", "BOOK_API", '"https://clinic.healthme.com.tw/hsbone/api/"'
             debuggable true // Ensures the app is debuggable in debug builds
         }
         release {
-            buildConfigField "String", "BOOK_API", '"https://clinic.healthme.com.tw/medicalec/api2/"'
+            buildConfigField "String", "BOOK_API", '"https://clinic.healthme.com.tw/hsbone/api/"'
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release

@@ -4,9 +4,9 @@ public class ApiConstant {
 
     // 正式機
     public static final String WATCH_API = "https://clinic.healthme.com.tw/health/";
-    public static final String BOOK_API = "https://clinic.healthme.com.tw/medicalec/api2/"; // https://clinic.healthme.com.tw/medicalec/api2/
+    public static final String BOOK_API = "https://clinic.healthme.com.tw/hsbone/api/"; // https://clinic.healthme.com.tw/hsbone/api2/
     public static final String QR_API = "https://clinic.healthme.com.tw/smcgate/api_v2/";
-    public static final String MUG_SHOT_URL = "https://clinic.healthme.com.tw/medicalec/";
+    public static final String MUG_SHOT_URL = "https://clinic.healthme.com.tw/hsbone/";
     public static final String IMAGE_URL = "https://clinic.healthme.com.tw/medicalhealth/";
     public static final String WEB_URL = "https://clinic.healthme.com.tw/medicalhealth/web/";
     public static final String PAY_URL = "https://clinic.healthme.com.tw/clinic147/payindex.php?";
@@ -25,8 +25,8 @@ public class ApiConstant {
 
     // 測試機
 //    public static final String WATCH_API = "https://tripspottest.jotangi.net/health/";
-//    public static final String BOOK_API = "https://tripspottest.jotangi.net/medicalec/api/";
-//    public static final String MUG_SHOT_URL = "https://tripspottest.jotangi.net/medicalec/";
+//    public static final String BOOK_API = "https://tripspottest.jotangi.net/hsbone/api/";
+//    public static final String MUG_SHOT_URL = "https://tripspottest.jotangi.net/hsbone/";
 //    public static final String IMAGE_URL = "https://tripspottest.jotangi.net/medicalhealth/";
 //    public static final String WEB_URL = "https://medicalec.jotangi.net/medicalhealth/web/";
 //    public static final String PAY_URL = "https://demo.jotangi.net/clinic/payindex.php?";
