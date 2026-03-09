@@ -28,16 +28,17 @@
 
             <TextView
                 android:text="@string/qa_content"
+                android:visibility="gone"
                 android:id="@+id/tvTermsContent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="14sp"
                 android:textColor="#000000" />
-<!--            <ImageView-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:src="@drawable/leg"-->
-<!--                android:adjustViewBounds="true" />-->
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/cxms_desc"
+                android:adjustViewBounds="true" />
         </LinearLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -101,7 +101,6 @@ class MyReserveFragment : BaseFragment() {
 
                             showErrorMsgDialog("您的預約時段已結束")
                         } else {
-
                             cancelBookingNo(it.sleepWell!!.bookingNo.toString())
                         }
                     }

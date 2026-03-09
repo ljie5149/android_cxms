@@ -18,6 +18,8 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.RadioButton
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import com.jotangi.cxms.Api.ApiUrl
 import com.jotangi.cxms.Api.book.apirequest.UserEditRequest
 import com.jotangi.cxms.Api.book.apiresponse.PhysicianScheduleData
 import com.jotangi.cxms.Api.book.apiresponse.HisRegistrationBean
@@ -41,6 +43,8 @@ import com.jotangi.cxms.databinding.DialogReserveHintBinding
 import com.jotangi.cxms.databinding.DialogReserveListBinding
 import com.jotangi.cxms.databinding.DialogSelectTimeBinding
 import com.jotangi.cxms.databinding.ProgressLoadingBinding
+import com.jotangi.cxms.jackyVariant.Common
+import com.jotangi.cxms.ui.home.ReserveListFragmentDirections
 import com.jotangi.cxms.utils.smartwatch.WatchUtils
 import com.jotangi.cxms.utils.smartwatch.apirequest.ArmUploadRequest
 import com.jotangi.cxms.utils.smartwatch.apirequest.KcalUploadRequest
@@ -562,6 +566,19 @@ class DialogUtil private constructor() {
         ad.show()
     }
 
+    private fun HisRegistrationListBean.toRegistrationBean(): HisRegistrationBean {
+        return HisRegistrationBean(
+            預掛識別碼 = this.預掛識別碼,
+            掛號序號 = this.掛號序號,
+            院所代號 = this.院所代號,
+            掛號日期 = this.日期,
+            科別 = this.科別,
+            診別 = this.診別,
+            班別 = this.班別,
+            就醫類別 = this.就醫類別,
+            醫師 = this.醫師名
+        )
+    }
     fun reserveAgree(
         activity: Activity,
         day: String,
@@ -627,6 +644,8 @@ class DialogUtil private constructor() {
             .setView(binding.root)
             .create()
 
+
+        val bean = data.toRegistrationBean()
         binding.apply {
 
             tvDate.text = "日期：${WatchUtils.instance.ymdChinaToWestern(data.日期!!)}"
@@ -637,12 +656,20 @@ class DialogUtil private constructor() {
             tvId.text = "預約號碼：${data.掛號序號}"
             tvId.visibility = if (data.掛號序號 == "0000") View.GONE else View.VISIBLE
 
+            tvAgree.setOnClickListener {
+                reserveAgree(
+                    activity,
+                    data.日期.toString(),
+                    bean,
+                    okClick = { data2 ->
+//                            goHome()
+                    },
+                    cancelClick = {
+                    }
+                )
+            }
             tvCancel.setOnClickListener {
                 ad.dismiss()
-            }
-            tvOk.setOnClickListener {
-                ad.dismiss()
-                okClick()
             }
         }
 

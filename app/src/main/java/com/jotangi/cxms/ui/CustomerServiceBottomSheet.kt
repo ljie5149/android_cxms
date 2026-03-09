@@ -22,7 +22,7 @@ class CustomerServiceBottomSheet : BottomSheetDialogFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<TextView>(R.id.tvServiceLine).setOnClickListener {
-            makePhoneCall("033330567")
+            makePhoneCall("033586670")
 
         }
 
