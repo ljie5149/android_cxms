@@ -280,8 +280,7 @@ object ConvertText {
     }
     // ---------------------------------------------------------
 
-    fun changeChinaDate(str: String): String {
-
+    fun changeCommonEraDate(str: String): String {
         return try {
             val year = str.substring(0, 3).toInt() + 1911
             val month = str.substring(3, 5)

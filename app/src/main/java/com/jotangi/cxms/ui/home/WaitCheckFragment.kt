@@ -60,10 +60,10 @@ class WaitCheckFragment : BaseFragment() {
             var count = 0
 
             for (i in it.indices) {
-                if (date != ConvertText.changeChinaDate(it[i].日期.toString())) {
+                if (date != ConvertText.changeCommonEraDate(it[i].日期.toString())) {
 
                     count = 1
-                    date = ConvertText.changeChinaDate(it[i].日期.toString())
+                    date = ConvertText.changeCommonEraDate(it[i].日期.toString())
                 } else {
 
                     count++

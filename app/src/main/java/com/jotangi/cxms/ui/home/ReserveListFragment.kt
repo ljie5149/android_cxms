@@ -195,10 +195,11 @@ class ReserveListFragment : BaseFragment() {
 
             lifecycleScope.launch {
 
+                val date_s = DateTimeUtil.instance.chinaToYmd(data.日期.toString())
                 bookViewModel.hisRegistration2(
                     HisRegistrationRequest(
                         Common.getToken(),
-                        data.日期.toString(),
+                        date_s,
                         data.排班識別碼!!
                     ),
                     success = {
@@ -207,7 +208,7 @@ class ReserveListFragment : BaseFragment() {
 
                             DialogUtil.instance.reserveHint(
                                 requireActivity(),
-                                data.日期.toString(),
+                                DateTimeUtil.instance.chinaToYmd(data.日期.toString()),
                                 it,
                                 okClick = { data1 ->
 
@@ -224,7 +225,7 @@ class ReserveListFragment : BaseFragment() {
                                     )
                                     DialogUtil.instance.reserveAgree(
                                         requireActivity(),
-                                        data.日期.toString(),
+                                        DateTimeUtil.instance.chinaToYmd(data.日期.toString()),
                                         it,
                                         okClick = { data2 ->
                                             if (Common.ReservationSuccess2Questionnaire)

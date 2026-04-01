@@ -539,10 +539,9 @@ class DialogUtil private constructor() {
             .setView(binding.root)
             .create()
 
-        val date_s = DateTimeUtil.instance.chinaToYmd(day)
         binding.apply {
 
-            tvDate.text = "日期：$date_s"
+            tvDate.text = "日期：$day"
             tvTime.text = "看診時段：${data.班別}"
             tvDivision.text = "科別：${data.科別}"
 //            tvDivisionCount.text = "診次：${data.診別}"
@@ -595,10 +594,9 @@ class DialogUtil private constructor() {
             .setView(binding.root)
             .create()
 
-        val date_s = if (!day.isNullOrEmpty()) DateTimeUtil.instance.chinaToYmd(day) else ""
         binding.apply {
 
-            tvDate.text = "日期：$date_s"
+            tvDate.text = "日期：$day"
             tvTime.text = "看診時段：${data.班別}"
             tvDivision.text = "科別：${data.科別}"
 //            tvDivisionCount.text = "診次：${data.診別}"
@@ -670,6 +668,10 @@ class DialogUtil private constructor() {
             }
             tvCancel.setOnClickListener {
                 ad.dismiss()
+            }
+            tvOk.setOnClickListener {
+                ad.dismiss()
+                okClick()
             }
         }
 

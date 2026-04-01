@@ -3,7 +3,7 @@ package com.jotangi.cxms.jackyVariant
 import java.security.MessageDigest
 
 object Common {
-    const val ReservationSuccess2Questionnaire = false
+    const val ReservationSuccess2Questionnaire = true
     const val query30day = false
     // JTGV^$($#!*\"+nowdate+\"(&$%@^@I(5375@%$#*F#\"+\"0rS8ai99SqN5PnAg
     const val Token_h       ="JTGV^$($#!*"

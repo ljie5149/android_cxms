@@ -48,7 +48,7 @@ companion object{
         val btn_reserve: TextView = view.findViewById(R.id.btn_reserve)
         val adapter = ReserveViewPagerAdapter(this)
         viewPager.adapter = adapter
-setupToolBarReserve()
+        setupToolBarReserve()
         btn_reserve.setOnClickListener {
             findNavController().navigate(
              ReserveFragmentDirections.actionReserveFragmentToCalendarFragment()

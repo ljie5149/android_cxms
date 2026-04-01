@@ -782,6 +782,8 @@ Log.d("micCheckKKK", Common.getToken())
                 baseRequest.member_pwd
             )
         } catch (e: Exception) {
+            Log.e("jacky API_ERROR", "userLogout2 failed", e)
+            Log.d("jacky", e.message.toString())
             BookDataResponse()
         }
     }

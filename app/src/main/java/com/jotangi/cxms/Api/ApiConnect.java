@@ -102,7 +102,7 @@ public class ApiConnect {
 
         this.listener = listener;
 
-        String url = "https://clinic.healthme.com.tw/hsbone/api2/getrecdata.php";
+        String url = "https://app.hsbone.com.tw:4355/api//getrecdata.php";
         Log.d(TAG, "URL: " + url);
         runTask = ApiConstant.TASK_summary;
 
